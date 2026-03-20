@@ -266,6 +266,48 @@ input:checked+.sl:before{transform:translateX(18px);}
 
 @media(max-width:480px){.hero h2{font-size:2rem;}.grid{grid-template-columns:1fr 1fr;}.apanel{width:100vw;}.aif{grid-template-columns:1fr;}}
 @media(max-width:360px){.grid{grid-template-columns:1fr;}}
+
+/* REVIEWS */
+.reviews{background:var(--crema);padding:3rem 1.25rem;border-top:1px solid var(--border);}
+.reviews-in{max-width:960px;margin:0 auto;}
+.reviews .sec-hd{padding:0 0 1.25rem;}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1rem;}
+.rev-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:1.25rem;box-shadow:var(--sh);position:relative;}
+.rev-stars{color:#c49a3c;font-size:1rem;margin-bottom:.5rem;letter-spacing:1px;}
+.rev-text{font-size:.78rem;color:var(--text2);line-height:1.7;font-weight:300;font-style:italic;margin-bottom:.85rem;}
+.rev-author{display:flex;align-items:center;gap:.6rem;}
+.rev-avatar{width:34px;height:34px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;color:white;font-size:.85rem;font-weight:600;font-family:"Playfair Display",serif;flex-shrink:0;}
+.rev-name{font-size:.78rem;font-weight:500;color:var(--text);}
+.rev-date{font-size:.62rem;color:var(--text2);margin-top:.05rem;}
+.rev-badge{position:absolute;top:.85rem;right:.85rem;background:var(--g7);color:var(--g2);font-size:.58rem;font-weight:600;padding:.12rem .45rem;border-radius:50px;letter-spacing:.3px;}
+.rev-form{background:var(--white);border:1.5px dashed var(--border);border-radius:18px;padding:1.25rem;margin-top:1rem;}
+.rev-form h4{font-family:"Playfair Display",serif;font-size:.95rem;color:var(--g1);margin-bottom:.85rem;font-weight:600;}
+.rev-stars-input{display:flex;gap:.25rem;margin-bottom:.65rem;cursor:pointer;}
+.rev-stars-input span{font-size:1.4rem;opacity:.35;transition:opacity .15s;}
+.rev-stars-input span.sel{opacity:1;}
+.rev-fields{display:grid;grid-template-columns:1fr 1fr;gap:.45rem;margin-bottom:.5rem;}
+.rev-fields .full{grid-column:1/-1;}
+.rf input,.rf textarea{width:100%;border:1px solid var(--border);border-radius:10px;padding:.45rem .65rem;font-family:"DM Sans",sans-serif;font-size:.78rem;color:var(--text);background:var(--crema);outline:none;transition:border-color .2s;}
+.rf input:focus,.rf textarea:focus{border-color:var(--g1);background:white;}
+.rf textarea{resize:vertical;min-height:60px;}
+.rf label{display:block;font-size:.6rem;font-weight:500;color:var(--text2);margin-bottom:.18rem;text-transform:uppercase;letter-spacing:.5px;}
+.brev{background:var(--g1);color:white;border:none;border-radius:50px;padding:.6rem 1.4rem;font-size:.75rem;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif;margin-top:.5rem;}
+.brev:hover{background:var(--g2);}
+
+/* ADMIN STATS */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem;}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1rem;text-align:center;}
+.stat-val{font-family:"Playfair Display",serif;font-size:1.6rem;font-weight:600;color:var(--g1);line-height:1;}
+.stat-lbl{font-size:.6rem;color:var(--text2);margin-top:.3rem;text-transform:uppercase;letter-spacing:.5px;}
+.stat-prod{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1rem;margin-bottom:.75rem;}
+.stat-prod-title{font-size:.65rem;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.6rem;}
+.stat-prod-item{display:flex;align-items:center;justify-content:space-between;padding:.35rem 0;border-bottom:1px solid var(--border);font-size:.75rem;}
+.stat-prod-item:last-child{border-bottom:none;}
+.stat-prod-name{color:var(--text);font-weight:400;}
+.stat-prod-cnt{background:var(--g1);color:white;border-radius:50px;padding:.12rem .5rem;font-size:.62rem;font-weight:600;}
+.breset{width:100%;background:none;border:1.5px solid #e07060;color:#c05040;border-radius:50px;padding:.65rem;font-size:.75rem;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif;margin-top:.25rem;}
+.breset:hover{background:#fef2f0;}
+.stats-sep{font-family:"Playfair Display",serif;font-size:.95rem;color:var(--g1);font-weight:600;margin:.85rem 0 .5rem;border-top:1px solid var(--border);padding-top:.85rem;}
 </style>
 </head>
 <body>
@@ -445,6 +487,23 @@ input:checked+.sl:before{transform:translateX(18px);}
         </div>
         <h4>Horario</h4><p>Respondemos lo antes posible. ¡Escríbenos cuando quieras!</p>
       </div>
+      <div class="cc" style="grid-column:1/-1">
+        <div class="cc-ball" style="background:linear-gradient(135deg,#25d366,#1a9e4a)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.532 5.862L0 24l6.293-1.51A11.936 11.936 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.823 9.823 0 01-5.019-1.376l-.36-.214-3.736.896.944-3.641-.235-.374A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        </div>
+        <h4>Cont&aacute;ctanos directamente</h4>
+        <p>Escr&iacute;benos por WhatsApp y te respondemos a la brevedad.</p>
+        <div style="display:flex;gap:.75rem;margin-top:.6rem;flex-wrap:wrap;">
+          <a href="https://wa.me/5355172105" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:.35rem .85rem;color:white;font-size:.72rem;text-decoration:none;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.532 5.862L0 24l6.293-1.51A11.936 11.936 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.823 9.823 0 01-5.019-1.376l-.36-.214-3.736.896.944-3.641-.235-.374A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+            +53 5517 2105
+          </a>
+          <a href="https://wa.me/54904258" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:.35rem .85rem;color:white;font-size:.72rem;text-decoration:none;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.532 5.862L0 24l6.293-1.51A11.936 11.936 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.823 9.823 0 01-5.019-1.376l-.36-.214-3.736.896.944-3.641-.235-.374A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+            54904258
+          </a>
+        </div>
+      </div>
       <div class="cc">
         <div class="cc-ball" style="background:linear-gradient(135deg,#8b5e3c,#6b3e22)">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="3" fill="white" opacity=".9"/><path d="M2 10h20" stroke="#6b3e22" stroke-width="1.5"/></svg>
@@ -459,12 +518,36 @@ input:checked+.sl:before{transform:translateX(18px);}
   </div>
 </div>
 
+
+<div class="reviews" id="sec-reviews">
+  <div class="reviews-in">
+    <div class="sec-hd"><div class="sec-line"></div><h3>Reseñas de clientes</h3><div class="sec-line"></div></div>
+    <div class="rev-grid" id="rev-grid"></div>
+    <div class="rev-form">
+      <h4>&#11088; Deja tu reseña</h4>
+      <div class="rev-stars-input" id="rev-stars-input">
+        <span data-v="1">&#9733;</span>
+        <span data-v="2">&#9733;</span>
+        <span data-v="3">&#9733;</span>
+        <span data-v="4">&#9733;</span>
+        <span data-v="5">&#9733;</span>
+      </div>
+      <div class="rev-fields">
+        <div class="rf"><label>Tu nombre</label><input id="rev-nombre" type="text" placeholder="Ej: María G."/></div>
+        <div class="rf"><label>Producto comprado</label><input id="rev-prod" type="text" placeholder="Ej: Planta Blanca"/></div>
+        <div class="rf full"><label>Tu opinión</label><textarea id="rev-texto" placeholder="Cuéntanos tu experiencia..."></textarea></div>
+      </div>
+      <button class="brev" id="btn-rev-enviar">Publicar reseña</button>
+    </div>
+  </div>
+</div>
+
 <div class="qrs" id="sec-qr">
   <div class="qrc"><h4>Código QR</h4><p>Imprímelo para que tus clientes lleguen directo a tu tienda.</p><div id="qrcode"></div></div>
   <div class="qrc"><h4>Enlace directo</h4><p>Comparte este enlace donde quieras.</p><div class="urlbox" id="urld"></div><button class="bcopy" id="btn-copy">Copiar enlace</button></div>
 </div>
 
-<footer><strong>Arte en Casa</strong> &nbsp;&middot;&nbsp; Plantas &amp; Manualidades &nbsp;&middot;&nbsp; Pedidos por <strong>WhatsApp</strong></footer>
+<footer><strong>Arte en Casa</strong> &nbsp;&middot;&nbsp; Plantas &amp; Manualidades &nbsp;&middot;&nbsp; Pedidos por <strong>WhatsApp</strong><br/><span style="font-size:.58rem;opacity:.4;margin-top:.4rem;display:inline-block;">Dise&ntilde;ado por <strong style="opacity:.7">AAHH</strong></span></footer>
 
 <div class="ovl" id="ovl"></div>
 
@@ -505,6 +588,7 @@ input:checked+.sl:before{transform:translateX(18px);}
 <input type="file" id="finput" accept="image/*" style="display:none"/>
 <script>
 var WA="5355172105";
+var WA2="54904258";
 var URL_T="https://aabrahamhhdez-create.github.io/tienda/tienda.html";
 var PWD="ElodieMaeR";
 /* PROD_INI */
@@ -594,6 +678,7 @@ function enviarPedido(){
   var ln=carrito.map(function(c){var p=gP(c.id);return "- "+p.n+" ("+p.id+") x"+c.qty+" = $"+(p.p*c.qty).toLocaleString("es-MX");});
   var tot=carrito.reduce(function(s,c){var p=gP(c.id);return s+p.p*c.qty;},0);
   var msg=encodeURIComponent("Hola! Quiero hacer un pedido:\n\n"+ln.join("\n")+"\n\nTOTAL: $"+tot.toLocaleString("es-MX")+"\n\nEsta disponible? Gracias!");
+  registrarPedido();
   window.open("https://wa.me/"+WA+"?text="+msg,"_blank");
 }
 function toggleCart(){document.getElementById("cpanel").classList.toggle("open");document.getElementById("ovl").classList.toggle("open");}
@@ -658,6 +743,7 @@ function vPwd(){
 var efImg={},nFoto="";
 function renderAdmin(){
   var body=document.getElementById("abody");body.innerHTML="";
+  renderStats();
   var nf=document.createElement("div");nf.className="nf";
   var h3=document.createElement("h3");h3.textContent="Agregar nuevo producto";
   var prev=document.createElement("img");prev.className="fp";prev.id="np-prev";prev.alt="";
@@ -772,8 +858,146 @@ document.getElementById("finput").addEventListener("change",function(){
   };
   r.readAsDataURL(file);this.value="";
 });
+
+/* ── REVIEWS ─────────────────────────────────────────── */
+var REVIEWS_KEY="aec_reviews";
+var revRating=5;
+
+var defaultReviews=[
+  {nombre:"Laura M.",prod:"Planta Blanca",texto:"Hermosa, llegó perfectamente empacada. La puse en mi sala y quedó increíble.",estrellas:5,fecha:"Marzo 2026"},
+  {nombre:"Carlos R.",prod:"Orquídea Brillante",texto:"Un regalo precioso para mi esposa. El detalle del glitter es espectacular.",estrellas:5,fecha:"Marzo 2026"},
+  {nombre:"Dania P.",prod:"Pato Cocinero",texto:"Muy original y bien hecho. Ya tiene su lugar en mi cocina. Recomendado!",estrellas:4,fecha:"Marzo 2026"}
+];
+
+function getReviews(){
+  var stored=localStorage.getItem(REVIEWS_KEY);
+  return stored?JSON.parse(stored):defaultReviews;
+}
+function saveReviews(revs){localStorage.setItem(REVIEWS_KEY,JSON.stringify(revs));}
+
+function renderReviews(){
+  var revs=getReviews();
+  var grid=document.getElementById("rev-grid");
+  if(!grid)return;
+  grid.innerHTML="";
+  revs.forEach(function(r){
+    var card=document.createElement("div");card.className="rev-card";
+    var stars="";for(var i=0;i<r.estrellas;i++)stars+="&#9733;";
+    card.innerHTML='<div class="rev-stars">'+stars+'</div>'+
+      '<p class="rev-text">"'+r.texto+'"</p>'+
+      '<div class="rev-badge">&#10003; Compra verificada</div>'+
+      '<div class="rev-author">'+
+        '<div class="rev-avatar">'+r.nombre.charAt(0)+'</div>'+
+        '<div><div class="rev-name">'+r.nombre+'</div><div class="rev-date">'+r.prod+' &middot; '+r.fecha+'</div></div>'+
+      '</div>';
+    grid.appendChild(card);
+  });
+}
+
+function initRevStars(){
+  var spans=document.querySelectorAll("#rev-stars-input span");
+  spans.forEach(function(sp){
+    sp.addEventListener("click",function(){
+      revRating=parseInt(this.dataset.v);
+      spans.forEach(function(s){s.classList.toggle("sel",parseInt(s.dataset.v)<=revRating);});
+    });
+    sp.addEventListener("mouseenter",function(){
+      var v=parseInt(this.dataset.v);
+      spans.forEach(function(s){s.style.opacity=parseInt(s.dataset.v)<=v?"1":".25";});
+    });
+  });
+  var wrap=document.getElementById("rev-stars-input");
+  if(wrap)wrap.addEventListener("mouseleave",function(){
+    spans.forEach(function(s){s.style.opacity=parseInt(s.dataset.v)<=revRating?"1":".35";});
+  });
+  // init default 5 stars
+  spans.forEach(function(s){s.classList.add("sel");});
+}
+
+function enviarResena(){
+  var nombre=document.getElementById("rev-nombre").value.trim();
+  var prod=document.getElementById("rev-prod").value.trim();
+  var texto=document.getElementById("rev-texto").value.trim();
+  if(!nombre||!texto){toast("Escribe tu nombre y opinion");return;}
+  var revs=getReviews();
+  var meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+  var now=new Date();
+  revs.unshift({nombre:nombre,prod:prod||"Producto Arte en Casa",texto:texto,estrellas:revRating,fecha:meses[now.getMonth()]+" "+now.getFullYear()});
+  saveReviews(revs);
+  renderReviews();
+  document.getElementById("rev-nombre").value="";
+  document.getElementById("rev-prod").value="";
+  document.getElementById("rev-texto").value="";
+  toast("Resena publicada! Gracias");
+}
+
+/* ── STATS ───────────────────────────────────────────── */
+var STATS_KEY="aec_stats";
+
+function getStats(){
+  var s=localStorage.getItem(STATS_KEY);
+  return s?JSON.parse(s):{pedidos:0,ingresos:0,productos:{}};
+}
+function saveStats(s){localStorage.setItem(STATS_KEY,JSON.stringify(s));}
+
+function registrarPedido(){
+  var s=getStats();
+  s.pedidos++;
+  var tot=carrito.reduce(function(acc,c){var p=gP(c.id);return acc+(p?p.p*c.qty:0);},0);
+  s.ingresos+=tot;
+  carrito.forEach(function(c){
+    var p=gP(c.id);if(!p)return;
+    if(!s.productos[p.id])s.productos[p.id]={nombre:p.n,qty:0};
+    s.productos[p.id].qty+=c.qty;
+  });
+  saveStats(s);
+}
+
+function renderStats(){
+  var s=getStats();
+  var body=document.getElementById("abody");
+  // Stats block at top
+  var wrap=document.createElement("div");
+  wrap.innerHTML='<div class="stats-sep">&#128200; Estadisticas de ventas</div>'+
+    '<div class="stat-grid">'+
+      '<div class="stat-card"><div class="stat-val">'+s.pedidos+'</div><div class="stat-lbl">Pedidos enviados</div></div>'+
+      '<div class="stat-card"><div class="stat-val">$'+s.ingresos.toLocaleString("es-MX")+'</div><div class="stat-lbl">Ingresos totales</div></div>'+
+    '</div>';
+
+  // Products ranking
+  var prods=Object.values(s.productos).sort(function(a,b){return b.qty-a.qty;});
+  if(prods.length){
+    var prodHtml='<div class="stat-prod"><div class="stat-prod-title">Productos mas pedidos</div>';
+    prods.slice(0,5).forEach(function(pr){
+      prodHtml+='<div class="stat-prod-item"><span class="stat-prod-name">'+pr.nombre+'</span><span class="stat-prod-cnt">'+pr.qty+' uds</span></div>';
+    });
+    prodHtml+='</div>';
+    wrap.innerHTML+=prodHtml;
+  } else {
+    wrap.innerHTML+='<div class="stat-prod" style="text-align:center;color:var(--text2);font-size:.75rem;padding:1rem;">Aun no hay pedidos registrados</div>';
+  }
+
+  wrap.innerHTML+='<button class="breset" id="btn-reset-stats">&#128465; Reiniciar estadisticas</button>'+
+    '<div style="font-size:.62rem;color:var(--text2);text-align:center;margin-top:.4rem;line-height:1.5;">Esto borrara todos los datos de ventas.<br/>Utile para cuando termines las pruebas.</div>'+
+    '<div class="stats-sep">&#128230; Productos</div>';
+
+  body.prepend(wrap);
+}
+
 renderTodo();renderC();initQR();chkHash();
+renderReviews();initRevStars();
 window.addEventListener("hashchange",chkHash);
+
+document.addEventListener("click",function(e2){
+  if(e2.target.id==="btn-rev-enviar")enviarResena();
+  if(e2.target.id==="btn-reset-stats"){
+    if(confirm("Seguro que deseas reiniciar todas las estadisticas?")){
+      localStorage.removeItem(STATS_KEY);
+      renderAdmin();toast("Estadisticas reiniciadas");
+    }
+  }
+});
+
 </script>
 </body>
 </html>
