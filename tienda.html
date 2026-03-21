@@ -308,6 +308,32 @@ input:checked+.sl:before{transform:translateX(18px);}
 .breset{width:100%;background:none;border:1.5px solid #e07060;color:#c05040;border-radius:50px;padding:.65rem;font-size:.75rem;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif;margin-top:.25rem;}
 .breset:hover{background:#fef2f0;}
 .stats-sep{font-family:"Playfair Display",serif;font-size:.95rem;color:var(--g1);font-weight:600;margin:.85rem 0 .5rem;border-top:1px solid var(--border);padding-top:.85rem;}
+
+/* PRODUCT MODAL */
+.modal-ovl{position:fixed;inset:0;background:rgba(15,36,24,.7);z-index:600;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
+.modal-ovl.open{opacity:1;pointer-events:all;}
+.modal-box{position:fixed;left:50%;top:50%;z-index:700;transform:translate(-50%,-50%) scale(.88);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.34,1.28,.64,1),opacity .3s;width:min(420px,92vw);background:var(--white);border-radius:24px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.35);}
+.modal-box.open{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:all;}
+.modal-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
+.modal-body{padding:1.25rem 1.25rem 1rem;}
+.modal-close{position:absolute;top:.75rem;right:.75rem;background:rgba(0,0,0,.35);border:none;width:32px;height:32px;border-radius:50%;color:white;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .2s;backdrop-filter:blur(4px);}
+.modal-close:hover{background:rgba(0,0,0,.55);}
+.modal-name{font-family:"Playfair Display",serif;font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:.3rem;}
+.modal-desc{font-size:.78rem;color:var(--text2);line-height:1.7;font-weight:300;margin-bottom:.65rem;}
+.modal-meds{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:.65rem;}
+.modal-price{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:600;color:var(--g1);margin-bottom:.75rem;}
+.modal-stk{font-size:.68rem;color:var(--text2);margin-bottom:.5rem;}
+.modal-stk.bajo{color:#c06040;}
+.modal-row{display:flex;align-items:center;gap:.75rem;}
+.modal-qctrl{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:50px;overflow:hidden;}
+.modal-qb{background:none;border:none;width:30px;height:30px;font-size:1rem;color:var(--g1);cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.modal-qb:hover{background:var(--g7);}
+.modal-qn{font-size:.85rem;font-weight:500;min-width:24px;text-align:center;}
+.modal-add{flex:1;background:var(--g1);color:white;border:none;border-radius:50px;padding:.7rem;font-size:.8rem;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif;transition:background .2s;}
+.modal-add:hover:not(:disabled){background:var(--g2);}
+.modal-add:disabled{background:var(--border);color:var(--text2);cursor:not-allowed;}
+/* Card click hint */
+.cimg{cursor:zoom-in;}
 </style>
 </head>
 <body>
@@ -473,13 +499,13 @@ input:checked+.sl:before{transform:translateX(18px);}
         <div class="cc-ball" style="background:linear-gradient(135deg,#3d7a52,#1a3d2b)">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="1" y="3" width="15" height="13" rx="2" fill="white" opacity=".9"/><path d="M16 8h2l3 3v5h-5V8z" fill="white" opacity=".75"/><circle cx="5.5" cy="18.5" r="2.5" fill="white"/><circle cx="18.5" cy="18.5" r="2.5" fill="white"/></svg>
         </div>
-        <h4>Dentro de la ciudad</h4><p>Entrega a domicilio en toda la ciudad.</p><div class="penv">$200 pesos</div><div class="nota">* Puede variar según distancia</div>
+        <h4>Dentro de la ciudad</h4><p>Entrega a domicilio en toda la ciudad.</p><div class="penv">$200 pesos</div>
       </div>
       <div class="cc">
         <div class="cc-ball" style="background:linear-gradient(135deg,#c49a3c,#a07828)">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="3" fill="white" opacity=".9"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="white" stroke-width="2"/></svg>
         </div>
-        <h4>Fuera de la ciudad</h4><p>Enviamos a localidades cercanas.</p><div class="penv">$250 pesos</div><div class="nota">* Puede variar según economía</div>
+        <h4>Fuera de la ciudad</h4><p>Enviamos a localidades cercanas.</p><div class="penv">$250 pesos</div><div class="nota">* Puede variar según la distancia</div>
       </div>
       <div class="cc">
         <div class="cc-ball" style="background:linear-gradient(135deg,#5a9e70,#3d7a52)">
@@ -487,7 +513,7 @@ input:checked+.sl:before{transform:translateX(18px);}
         </div>
         <h4>Horario</h4><p>Respondemos lo antes posible. ¡Escríbenos cuando quieras!</p>
       </div>
-      <div class="cc" style="grid-column:1/-1">
+      <div class="cc">
         <div class="cc-ball" style="background:linear-gradient(135deg,#25d366,#1a9e4a)">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.532 5.862L0 24l6.293-1.51A11.936 11.936 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.823 9.823 0 01-5.019-1.376l-.36-.214-3.736.896.944-3.641-.235-.374A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
         </div>
@@ -496,11 +522,11 @@ input:checked+.sl:before{transform:translateX(18px);}
         <div style="display:flex;gap:.75rem;margin-top:.6rem;flex-wrap:wrap;">
           <a href="https://wa.me/5355172105" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:.35rem .85rem;color:white;font-size:.72rem;text-decoration:none;">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.532 5.862L0 24l6.293-1.51A11.936 11.936 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.823 9.823 0 01-5.019-1.376l-.36-.214-3.736.896.944-3.641-.235-.374A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-            +53 5517 2105
+            +53 55172105
           </a>
-          <a href="https://wa.me/54904258" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:.35rem .85rem;color:white;font-size:.72rem;text-decoration:none;">
+          <a href="https://wa.me/5354904258" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:.35rem .85rem;color:white;font-size:.72rem;text-decoration:none;">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.125 1.532 5.862L0 24l6.293-1.51A11.936 11.936 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.823 9.823 0 01-5.019-1.376l-.36-.214-3.736.896.944-3.641-.235-.374A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-            54904258
+            +53 54904258
           </a>
         </div>
       </div>
@@ -581,6 +607,29 @@ input:checked+.sl:before{transform:translateX(18px);}
     <div class="pwdiw"><input type="password" id="pwdi" placeholder="Contraseña"/><button class="pwdey" id="pwdey">&#128065;</button></div>
     <div class="pwderr" id="pwderr"></div>
     <div class="pwdbs"><button class="pwdcn" id="btn-pwd-cancel">Cancelar</button><button class="pwden" id="btn-pwd-ok">Entrar</button></div>
+  </div>
+</div>
+
+
+<!-- PRODUCT MODAL -->
+<div class="modal-ovl" id="modal-ovl"></div>
+<div class="modal-box" id="modal-box">
+  <button class="modal-close" id="modal-close">&#x2715;</button>
+  <img class="modal-img" id="modal-img" src="" alt=""/>
+  <div class="modal-body">
+    <div class="modal-name" id="modal-name"></div>
+    <div class="modal-desc" id="modal-desc"></div>
+    <div class="modal-meds" id="modal-meds"></div>
+    <div class="modal-price" id="modal-price"></div>
+    <div class="modal-stk" id="modal-stk"></div>
+    <div class="modal-row">
+      <div class="modal-qctrl">
+        <button class="modal-qb" id="modal-qm">&#8722;</button>
+        <span class="modal-qn" id="modal-qn">1</span>
+        <button class="modal-qb" id="modal-qp">&#43;</button>
+      </div>
+      <button class="modal-add" id="modal-add">&#128722; A&ntilde;adir al carrito</button>
+    </div>
   </div>
 </div>
 
@@ -690,7 +739,7 @@ function renderTodo(){
     P.filter(function(x){return x.s===sec;}).forEach(function(p,i){
       var mx=p.st>0?p.st:99;
       var card=document.createElement("div");card.className="card"+(p.d?"":" agotado");card.style.animationDelay=(i*0.07)+"s";
-      var ci=document.createElement("div");ci.className="cimg";
+      var ci=document.createElement("div");ci.className="cimg";ci.dataset.action="abrirModal";ci.dataset.id=p.id;
       var im=document.createElement("img");im.src=p.img;im.alt=p.n;im.loading="lazy";
       var bdg=document.createElement("span");bdg.className="bdg "+(p.d?"ok":"no");bdg.textContent=p.d?"Disponible":"Agotado";
       var pid=document.createElement("span");pid.className="pid";pid.textContent=p.id;
@@ -830,7 +879,10 @@ function toast(msg){var t=document.getElementById("toast");t.textContent=msg;t.c
 function chkHash(){if(window.location.hash==="#admin"){history.replaceState(null,"",window.location.pathname);abrirAdmin();}}
 document.addEventListener("click",function(e){
   var el=e.target;
-  var action=el.dataset&&el.dataset.action;var id=el.dataset&&el.dataset.id;var sc=el.dataset&&el.dataset.scroll;
+  // Walk up to find element with data-action or data-scroll
+  var elA=el.closest("[data-action]")||el;
+  var elS=el.closest("[data-scroll]")||el;
+  var action=elA.dataset&&elA.dataset.action;var id=elA.dataset&&elA.dataset.id;var sc=elS.dataset&&elS.dataset.scroll;
   if(el.id==="btn-cart"||el.closest("#btn-cart"))toggleCart();
   if(el.id==="btn-close-cart")toggleCart();
   if(el.id==="btn-close-admin")cerrarAdmin();
@@ -844,6 +896,7 @@ document.addEventListener("click",function(e){
   if(el.id==="btn-pwd-cancel")cPwd();
   if(el.id==="pwdey"){var inp=document.getElementById("pwdi");inp.type=inp.type==="password"?"text":"password";el.textContent=inp.type==="password"?"👁":"🙈";}
   if(sc)irSeccion(sc);
+  if(action==="abrirModal")abrirModal(id);
   if(action==="addC")addC(id);if(action==="delC")delC(id);if(action==="chgC")chgC(id,parseInt(el.dataset.val));
   if(action==="adjQ")adjQ(id,parseInt(el.dataset.val));if(action==="elimP")elimP(id);
   if(action==="agregarP")agregarP();if(action==="selFoto")selFoto(el.dataset.target);
@@ -983,6 +1036,66 @@ function renderStats(){
 
   body.prepend(wrap);
 }
+
+
+/* ── PRODUCT MODAL ─────────────────────────────────── */
+var modalPid=null;
+var modalQty=1;
+
+function abrirModal(id){
+  var p=gP(id);if(!p)return;
+  modalPid=id;
+  var mx=p.st>0?p.st:99;
+  modalQty=1;
+  document.getElementById("modal-img").src=p.img;
+  document.getElementById("modal-img").alt=p.n;
+  document.getElementById("modal-name").textContent=p.n;
+  document.getElementById("modal-desc").textContent=p.ds;
+  document.getElementById("modal-price").textContent="$"+p.p.toLocaleString("es-MX");
+  var meds=document.getElementById("modal-meds");
+  meds.innerHTML="";
+  p.m.forEach(function(m){var sp=document.createElement("span");sp.className="med";sp.textContent=m;meds.appendChild(sp);});
+  var stk=document.getElementById("modal-stk");
+  if(p.st>0){stk.textContent=p.st<=3?"Solo "+p.st+" disponibles":"Stock: "+p.st;stk.className="modal-stk"+(p.st<=3?" bajo":"");}
+  else{stk.textContent="";}
+  document.getElementById("modal-qn").textContent=1;
+  document.getElementById("modal-qn").dataset.max=mx;
+  var addBtn=document.getElementById("modal-add");
+  addBtn.disabled=!p.d;
+  addBtn.dataset.id=id;
+  document.getElementById("modal-ovl").classList.add("open");
+  document.getElementById("modal-box").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function cerrarModal(){
+  document.getElementById("modal-ovl").classList.remove("open");
+  document.getElementById("modal-box").classList.remove("open");
+  document.body.style.overflow="";
+  modalPid=null;
+}
+document.getElementById("modal-close").addEventListener("click",cerrarModal);
+document.getElementById("modal-ovl").addEventListener("click",cerrarModal);
+document.getElementById("modal-qm").addEventListener("click",function(){
+  var el=document.getElementById("modal-qn");
+  el.textContent=Math.max(1,parseInt(el.textContent)-1);
+});
+document.getElementById("modal-qp").addEventListener("click",function(){
+  var el=document.getElementById("modal-qn");
+  var mx=parseInt(el.dataset.max||"99");
+  el.textContent=Math.min(mx,parseInt(el.textContent)+1);
+});
+document.getElementById("modal-add").addEventListener("click",function(){
+  if(!modalPid)return;
+  var qty=parseInt(document.getElementById("modal-qn").textContent);
+  var p=gP(modalPid);if(!p||!p.d)return;
+  var enC=carrito.reduce(function(s,c){return c.id===modalPid?s+c.qty:s;},0);
+  var mx=p.st>0?p.st:999;
+  var ag=Math.min(qty,mx-enC);
+  if(ag<=0){toast("No hay mas unidades disponibles");return;}
+  var ex=carrito.find(function(c){return c.id===modalPid;});
+  if(ex){ex.qty+=ag;}else{carrito.push({id:modalPid,qty:ag});}
+  savC();renderC();cerrarModal();toast("Anadido: "+p.n);
+});
 
 renderTodo();renderC();initQR();chkHash();
 renderReviews();initRevStars();
